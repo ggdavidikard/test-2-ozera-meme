@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌊 Амбассадорство 2 Озёра · Ардзинба Давид</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #0b2b26 0%, #1e4d45 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(100, 210, 180, 0.18), transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    body::before { top: -120px; left: -120px; }
+    body::after { bottom: -120px; right: -120px; background: radial-gradient(circle at 70% 70%, rgba(70, 160, 140, 0.22), transparent 70%); }
+
+    .card {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+      width: 100%;
+      background: rgba(8, 32, 28, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(120, 200, 170, 0.35);
+      border-radius: 42px;
+      padding: 2.6rem 2.6rem 3rem;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(200, 240, 220, 0.08) inset;
+      color: #e2f3ec;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.6rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .title-block h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(130deg, #b5f0d9, #7ad0b0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .title-block .sub {
+      font-size: 0.95rem;
+      color: #9bc7b8;
+      margin-top: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ambassador-badge {
+      background: rgba(60, 160, 130, 0.3);
+      border: 1px solid rgba(140, 230, 190, 0.5);
+      border-radius: 80px;
+      padding: 0.45rem 1.1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #c6ffe9;
+      backdrop-filter: blur(4px);
+      white-space: nowrap;
+    }
+
+    .divider {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #4e9e86, #a0e0c8, #4e9e86, transparent);
+      margin: 1.4rem 0 1.8rem;
+      border: none;
+    }
+
+    .anketa {
+      animation: floatIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .anketa .q-label {
+      margin-bottom: 1.4rem;
+    }
+
+    .input-group {
+      margin-bottom: 1.1rem;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 0.9rem;
+      color: #9bc7b8;
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    .input-group input {
+      width: 100%;
+      background: rgba(15, 50, 42, 0.8);
+      border: 1px solid #366b5b;
+      border-radius: 16px;
+      padding: 0.85rem 1.1rem;
+      font-size: 1rem;
+      color: #e2f3ec;
+      font-family: inherit;
+      transition: all 0.15s;
+      outline: none;
+    }
+
+    .input-group input:focus {
+      border-color: #7bd6b4;
+      box-shadow: 0 0 14px rgba(100, 220, 180, 0.35);
+      background: rgba(20, 60, 50, 0.9);
+    }
+
+    .input-group input::placeholder {
+      color: #5f8d7d;
+    }
+
+    .progress-wrap {
+      margin-bottom: 2rem;
+    }
+
+    .progress-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #8ec4b3;
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+    }
+
+    .progress-bar {
+      height: 8px;
+      background: rgba(20, 60, 50, 0.8);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(80, 150, 130, 0.4);
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #2f9b7a, #7be0bd);
+      border-radius: 20px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 12px #5fd0ab;
+    }
+
+    .question {
+      display: none;
+      animation: floatIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .question.active {
+      display: block;
+    }
+
+    @keyframes floatIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .q-label {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .q-number {
+      background: #2d6656;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #d4fff0;
+      border: 1px solid #78c8ac;
+      box-shadow: 0 0 14px rgba(100, 220, 180, 0.4);
+      flex-shrink: 0;
+    }
+
+    .q-text {
+      font-size: 1.35rem;
+      font-weight: 500;
+      line-height: 1.4;
+      color: #e0fff2;
+    }
+
+    .q-hint {
+      font-size: 0.92rem;
+      color: #92bcae;
+      margin-left: 48px;
+      margin-top: -0.2rem;
+      margin-bottom: 1.2rem;
+      font-style: italic;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .scale {
+      display: flex;
+      gap: 6px;
+      justify-content: space-between;
+      margin: 1.4rem 0 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .scale-option {
+      flex: 1;
+      min-width: 42px;
+      text-align: center;
+      background: rgba(20, 60, 50, 0.8);
+      border: 1px solid #3b7866;
+      border-radius: 30px;
+      padding: 0.8rem 0;
+      font-weight: 600;
+      color: #bbded1;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      user-select: none;
+    }
+
+    .scale-option:hover {
+      background: #2c6d59;
+      border-color: #6bc8a8;
+      transform: translateY(-2px);
+    }
+
+    .scale-option.selected {
+      background: #2f8d70;
+      border-color: #b1f7dc;
+      color: #ffffff;
+      box-shadow: 0 0 22px #54c8a0;
+      transform: scale(1.05);
+    }
+
+    .scale-caption {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: #7fa898;
+      margin-top: 0.5rem;
+      padding: 0 0.2rem;
+    }
+
+    .phrases {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.2rem;
+    }
+
+    .phrase {
+      background: rgba(15, 50, 42, 0.8);
+      border: 1px solid #366b5b;
+      border-radius: 100px;
+      padding: 0.75rem 1.4rem;
+      font-size: 0.98rem;
+      color: #cfeee2;
+      cursor: pointer;
+      transition: all 0.15s;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      user-select: none;
+    }
+
+    .phrase:hover {
+      background: #286f59;
+      border-color: #8ad4bb;
+      transform: translateY(-2px);
+    }
+
+    .phrase.selected {
+      background: #3a9b7c;
+      border-color: #b9ffe2;
+      color: #031f18;
+      font-weight: 600;
+      box-shadow: 0 0 22px #61cfab;
+    }
+
+    .choice-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.2rem 0 0.4rem;
+    }
+
+    .choice-btn {
+      flex: 1;
+      min-width: 160px;
+      background: rgba(22, 62, 52, 0.85);
+      border: 1px solid #4b8b78;
+      border-radius: 48px;
+      padding: 1rem 1rem;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #d6f5ea;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      user-select: none;
+    }
+
+    .choice-btn:hover {
+      background: #2b6e5b;
+      border-color: #91dcc2;
+      transform: translateY(-2px);
+    }
+
+    .choice-btn.selected {
+      background: #287a62;
+      border-color: #b4f7dd;
+      color: #ffffff;
+      box-shadow: 0 0 22px #4bc09c;
+      font-weight: 600;
+    }
+
+    .nav-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2.4rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-back,
+    .btn-next {
+      border: none;
+      border-radius: 80px;
+      padding: 1rem 2.2rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      user-select: none;
+    }
+
+    .btn-back {
+      background: transparent;
+      border: 1px solid #4b8b78;
+      color: #a7d3c4;
+    }
+
+    .btn-back:hover {
+      background: rgba(40, 100, 85, 0.4);
+      color: #d6f5ea;
+    }
+
+    .btn-back:disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+
+    .btn-next {
+      background: linear-gradient(95deg, #2f8268, #256d57);
+      color: #effff9;
+      box-shadow: 0 10px 26px -8px #0a2f25, 0 0 0 1px #7ed6b8 inset;
+      margin-left: auto;
+    }
+
+    .btn-next:hover:not(:disabled) {
+      background: linear-gradient(95deg, #379a7a, #2c7b62);
+      box-shadow: 0 14px 30px -8px #0d3d30, 0 0 0 2px #9de8ce inset;
+      transform: translateY(-2px);
+    }
+
+    .btn-next:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .btn-next:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .result {
+      display: none;
+      animation: floatIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
+    }
+
+    .result.active {
+      display: block;
+    }
+
+    .result-emoji {
+      font-size: 5rem;
+      margin-bottom: 0.6rem;
+      filter: drop-shadow(0 0 25px rgba(120, 220, 180, 0.6));
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+    }
+
+    .result-title {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(130deg, #b5f0d9, #7ad0b0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
+    }
+
+    .result-desc {
+      font-size: 1.1rem;
+      color: #b3d9cc;
+      max-width: 560px;
+      margin: 0 auto 1.8rem;
+      line-height: 1.55;
+    }
+
+    .result-score {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(20, 60, 50, 0.8);
+      border: 1px solid #4b8b78;
+      border-radius: 100px;
+      padding: 0.9rem 2rem;
+      font-size: 1.15rem;
+      color: #d4fff0;
+      margin-bottom: 2rem;
+      font-weight: 600;
+      box-shadow: 0 0 24px rgba(80, 200, 160, 0.25);
+    }
+
+    .result-score .big {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #9cf0d3;
+    }
+
+    .result-list {
+      text-align: left;
+      background: rgba(12, 42, 36, 0.7);
+      border: 1px solid rgba(80, 150, 130, 0.35);
+      border-radius: 24px;
+      padding: 1.6rem 1.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .result-list h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #7ec8b0;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .result-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.65rem 0;
+      border-bottom: 1px dashed rgba(90, 160, 140, 0.3);
+      font-size: 0.98rem;
+      color: #c6e8dc;
+    }
+
+    .result-item:last-child {
+      border-bottom: none;
+    }
+
+    .result-item .ans {
+      color: #8fe6c5;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .btn-restart {
+      background: linear-gradient(95deg, #2f8268, #256d57);
+      border: none;
+      border-radius: 80px;
+      padding: 1.1rem 2.6rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #effff9;
+      letter-spacing: 0.6px;
+      cursor: pointer;
+      box-shadow: 0 12px 30px -8px #0a2f25, 0 0 0 1px #7ed6b8 inset;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .btn-restart:hover {
+      background: linear-gradient(95deg, #379a7a, #2c7b62);
+      box-shadow: 0 18px 35px -8px #0d3d30, 0 0 0 2px #9de8ce inset;
+      transform: translateY(-2px);
+    }
+
+    .btn-restart:active {
+      transform: scale(0.98);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.78rem;
+      color: #4d8574;
+      letter-spacing: 0.8px;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s;
+      padding: 0.5rem;
+      line-height: 1.6;
+    }
+
+    .copyright:hover {
+      color: #6fb39e;
+    }
+
+    .copyright .name {
+      font-weight: 600;
+      color: #5f9d89;
+    }
+
+    .admin-panel {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(4, 16, 14, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 2rem 1.5rem;
+      overflow-y: auto;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .admin-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .admin-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.8rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 2px solid rgba(80, 160, 140, 0.35);
+    }
+
+    .admin-header h2 {
+      font-size: 1.8rem;
+      background: linear-gradient(130deg, #b5f0d9, #7ad0b0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 700;
+    }
+
+    .admin-header .sub {
+      font-size: 0.85rem;
+      color: #7ab8a3;
+      margin-top: 0.3rem;
+    }
+
+    .admin-close {
+      background: rgba(60, 40, 40, 0.6);
+      border: 1px solid #a86b6b;
+      color: #f0c0c0;
+      border-radius: 50px;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .admin-close:hover {
+      background: rgba(120, 50, 50, 0.7);
+      color: #ffe0e0;
+    }
+
+    .admin-stats {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.6rem;
+    }
+
+    .stat-box {
+      flex: 1;
+      min-width: 160px;
+      background: rgba(15, 50, 42, 0.7);
+      border: 1px solid #366b5b;
+      border-radius: 20px;
+      padding: 1.1rem 1.3rem;
+    }
+
+    .stat-box .label {
+      font-size: 0.78rem;
+      color: #7ab8a3;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-box .value {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #9cf0d3;
+    }
+
+    .admin-actions {
+      display: flex;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.4rem;
+    }
+
+    .admin-btn {
+      background: rgba(22, 62, 52, 0.85);
+      border: 1px solid #4b8b78;
+      border-radius: 40px;
+      padding: 0.6rem 1.3rem;
+      font-size: 0.88rem;
+      color: #d6f5ea;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-weight: 500;
+    }
+
+    .admin-btn:hover {
+      background: #2b6e5b;
+      border-color: #91dcc2;
+    }
+
+    .admin-btn.danger {
+      border-color: #a86b6b;
+      color: #f0c0c0;
+    }
+
+    .admin-btn.danger:hover {
+      background: rgba(120, 50, 50, 0.6);
+    }
+
+    .admin-table-wrap {
+      background: rgba(10, 36, 30, 0.85);
+      border: 1px solid rgba(80, 150, 130, 0.35);
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    .admin-table th {
+      background: rgba(30, 80, 66, 0.7);
+      color: #a8e6d0;
+      text-align: left;
+      padding: 0.9rem 1rem;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      white-space: nowrap;
+    }
+
+    .admin-table td {
+      padding: 0.8rem 1rem;
+      border-bottom: 1px solid rgba(60, 120, 100, 0.25);
+      color: #c6e8dc;
+      vertical-align: top;
+    }
+
+    .admin-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .admin-table tr:hover td {
+      background: rgba(30, 80, 66, 0.25);
+    }
+
+    .admin-table .name-cell {
+      font-weight: 600;
+      color: #e0fff2;
+      white-space: nowrap;
+    }
+
+    .admin-table .score-cell {
+      font-weight: 800;
+      color: #9cf0d3;
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+
+    .admin-table .badge-cell {
+      font-size: 0.82rem;
+      color: #7ec8b0;
+      white-space: nowrap;
+    }
+
+    .admin-table .answers-cell {
+      font-size: 0.8rem;
+      color: #9bc7b8;
+      max-width: 320px;
+      line-height: 1.5;
+    }
+
+    .admin-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #6fa895;
+      font-size: 1rem;
+    }
+
+    .admin-empty .big {
+      font-size: 3rem;
+      display: block;
+      margin-bottom: 0.8rem;
+      opacity: 0.6;
+    }
+
+    .admin-time {
+      font-size: 0.78rem;
+      color: #6fa895;
+      white-space: nowrap;
+    }
+
+    .admin-search {
+      width: 100%;
+      background: rgba(15, 50, 42, 0.8);
+      border: 1px solid #366b5b;
+      border-radius: 16px;
+      padding: 0.8rem 1.1rem;
+      font-size: 0.95rem;
+      color: #e2f3ec;
+      font-family: inherit;
+      outline: none;
+      margin-bottom: 1.2rem;
+      transition: all 0.15s;
+    }
+
+    .admin-search:focus {
+      border-color: #7bd6b4;
+      box-shadow: 0 0 14px rgba(100, 220, 180, 0.3);
+    }
+
+    .admin-search::placeholder {
+      color: #5f8d7d;
+    }
+
+    .copy-toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: rgba(47, 141, 112, 0.95);
+      color: #fff;
+      padding: 0.8rem 1.8rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .copy-toast.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 560px) {
+      .card { padding: 1.8rem 1.4rem 2.2rem; border-radius: 32px; }
+      .title-block h1 { font-size: 1.65rem; }
+      .q-text { font-size: 1.12rem; }
+      .q-number { width: 30px; height: 30px; font-size: 0.9rem; }
+      .q-hint { margin-left: 42px; font-size: 0.85rem; }
+      .scale-option { padding: 0.6rem 0; font-size: 0.85rem; min-width: 30px; }
+      .phrase { padding: 0.6rem 1.1rem; font-size: 0.88rem; }
+      .choice-btn { padding: 0.85rem 0.8rem; font-size: 0.95rem; min-width: 120px; }
+      .btn-next, .btn-back { padding: 0.85rem 1.5rem; font-size: 0.95rem; }
+      .result-emoji { font-size: 3.8rem; }
+      .result-title { font-size: 1.55rem; }
+      .result-desc { font-size: 1rem; }
+      .result-list { padding: 1.2rem 1.1rem; }
+      .result-item { font-size: 0.88rem; }
+      .admin-table { font-size: 0.78rem; }
+      .admin-table th, .admin-table td { padding: 0.6rem 0.6rem; }
+      .admin-table .answers-cell { max-width: 160px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <div class="title-block">
+        <h1>🌿 2 Озера · Ардзинба Давид</h1>
+        <div class="sub">
+          <span>💧</span> тест на амбассадорство
+        </div>
+      </div>
+      <div class="ambassador-badge">амбассадор · v2</div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Анкета -->
+    <div class="anketa" id="anketa">
+      <div class="q-label">
+        <span class="q-number">📝</span>
+        <span class="q-text">Анкета участника</span>
+      </div>
+      <div class="q-hint">
+        <span>✍️</span> представься, будущий амбассадор
+      </div>
+      <div class="input-group">
+        <label>Имя *</label>
+        <input type="text" id="inpName" placeholder="Например: Давид" autocomplete="given-name">
+      </div>
+      <div class="input-group">
+        <label>Фамилия *</label>
+        <input type="text" id="inpSurname" placeholder="Например: Ардзинба" autocomplete="family-name">
+      </div>
+      <div class="input-group">
+        <label>Возраст</label>
+        <input type="text" id="inpAge" placeholder="Необязательно" inputmode="numeric">
+      </div>
+      <div class="input-group">
+        <label>Город / село</label>
+        <input type="text" id="inpCity" placeholder="Откуда ты, амбассадор?">
+      </div>
+      <div class="input-group">
+        <label>Контакт (телефон / телеграм)</label>
+        <input type="text" id="inpContact" placeholder="@username или +7...">
+      </div>
+      <div class="nav-row">
+        <button class="btn-next" id="btnStart" disabled>Начать тест →</button>
+      </div>
+    </div>
+
+    <!-- Прогресс -->
+    <div class="progress-wrap" id="progressWrap" style="display:none;">
+      <div class="progress-info">
+        <span id="progressText">Вопрос 1 из 6</span>
+        <span id="progressPercent">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <!-- Вопрос 1 -->
+    <div class="question" data-q="0">
+      <div class="q-label">
+        <span class="q-number">1</span>
+        <span class="q-text">Как хорошо вы знаете нашу компанию?</span>
+      </div>
+      <div class="q-hint">
+        <span>🐸</span> от 1 до 10, где 10 — «я и есть озеро»
+      </div>
+      <div class="scale" data-type="scale">
+        <div class="scale-option" data-value="1">1</div>
+        <div class="scale-option" data-value="2">2</div>
+        <div class="scale-option" data-value="3">3</div>
+        <div class="scale-option" data-value="4">4</div>
+        <div class="scale-option" data-value="5">5</div>
+        <div class="scale-option" data-value="6">6</div>
+        <div class="scale-option" data-value="7">7</div>
+        <div class="scale-option" data-value="8">8</div>
+        <div class="scale-option" data-value="9">9</div>
+        <div class="scale-option" data-value="10">10</div>
+      </div>
+      <div class="scale-caption">
+        <span>🌱 почти не знаю</span>
+        <span>🏞️ знаю каждую каплю</span>
+      </div>
+    </div>
+
+    <!-- Вопрос 2 -->
+    <div class="question" data-q="1">
+      <div class="q-label">
+        <span class="q-number">2</span>
+        <span class="q-text">Выберите фразу, которая вам ближе</span>
+      </div>
+      <div class="q-hint">
+        <span>🗣️</span> только честно, как в болоте
+      </div>
+      <div class="phrases" data-type="phrase">
+        <div class="phrase" data-value="«2 Озера — это туалетная и болотная вода»">«2 Озера — это туалетная и болотная вода»</div>
+        <div class="phrase" data-value="«Ардзинба Давид — гений гидрологии»">«Ардзинба Давид — гений гидрологии»</div>
+        <div class="phrase" data-value="«Я пью только из двух озёр»">«Я пью только из двух озёр»</div>
+        <div class="phrase" data-value="«Болото — это состояние души»">«Болото — это состояние души»</div>
+        <div class="phrase" data-value="«Этикетка важнее содержимого»">«Этикетка важнее содержимого»</div>
+      </div>
+    </div>
+
+    <!-- Вопрос 3 -->
+    <div class="question" data-q="2">
+      <div class="q-label">
+        <span class="q-number">3</span>
+        <span class="q-text">Устраивает ли вас, что 2 Озера — это туалетная и болотная вода?</span>
+      </div>
+      <div class="choice-row" data-type="choice">
+        <div class="choice-btn" data-value="Да, полностью">✅ Да, полностью</div>
+        <div class="choice-btn" data-value="Нет, я в шоке">❌ Нет, я в шоке</div>
+        <div class="choice-btn" data-value="Смотря какое озеро">🤔 Смотря какое озеро</div>
+      </div>
+    </div>
+
+    <!-- Вопрос 4 -->
+    <div class="question" data-q="3">
+      <div class="q-label">
+        <span class="q-number">4</span>
+        <span class="q-text">Готовы купить бутылку, а производитель даст вам только этикетку — и вы её наклеите?</span>
+      </div>
+      <div class="choice-row" data-type="choice">
+        <div class="choice-btn" data-value="Да, я клею как бог">🧴 Да, я клею как бог</div>
+        <div class="choice-btn" data-value="Нет, это перебор">😤 Нет, это перебор</div>
+        <div class="choice-btn" data-value="Только если Ардзинба Давид рядом">🤝 Только если Ардзинба Давид рядом</div>
+      </div>
+    </div>
+
+    <!-- Вопрос 5 -->
+    <div class="question" data-q="4">
+      <div class="q-label">
+        <span class="q-number">5</span>
+        <span class="q-text">Готовы ли вы защищать эту озеру всю свою жизнь?</span>
+      </div>
+      <div class="q-hint">
+        <span>⚔️</span> даже от комаров и токсичных отзывов
+      </div>
+      <div class="choice-row" data-type="choice">
+        <div class="choice-btn" data-value="Клянусь болотом">🛡️ Клянусь болотом</div>
+        <div class="choice-btn" data-value="Нет, я пас">💔 Нет, я пас</div>
+        <div class="choice-btn" data-value="Только до первого шторма">🫡 Только до первого шторма</div>
+      </div>
+    </div>
+
+    <!-- Вопрос 6 -->
+    <div class="question" data-q="5">
+      <div class="q-label">
+        <span class="q-number">6</span>
+        <span class="q-text">Ваш девиз как амбассадора?</span>
+      </div>
+      <div class="phrases" data-type="phrase">
+        <div class="phrase" data-value="«Озеро не осушишь — амбассадор не сдаётся»">«Озеро не осушишь — амбассадор не сдаётся»</div>
+        <div class="phrase" data-value="«Два озера — одна душа»">«Два озера — одна душа»</div>
+        <div class="phrase" data-value="«Наклеил этикетку — спас мир»">«Наклеил этикетку — спас мир»</div>
+        <div class="phrase" data-value="«Туалетная вода — это искусство»">«Туалетная вода — это искусство»</div>
+      </div>
+    </div>
+
+    <!-- Навигация -->
+    <div class="nav-row" id="navRow" style="display:none;">
+      <button class="btn-back" id="btnBack" disabled>← Назад</button>
+      <button class="btn-next" id="btnNext" disabled>Продолжить →</button>
+    </div>
+
+    <!-- Результат -->
+    <div class="result" id="result">
+      <div class="result-emoji" id="resultEmoji">🏞️</div>
+      <div class="result-title" id="resultTitle">Амбассадор!</div>
+      <div class="result-desc" id="resultDesc"></div>
+      <div class="result-score" id="resultScore"></div>
+      <div class="result-list" id="resultList">
+        <h3>Твои ответы</h3>
+        <div id="resultItems"></div>
+      </div>
+      <button class="btn-restart" id="btnRestart">🔄 Пройти заново</button>
+    </div>
+
+    <!-- Копирайт -->
+    <div class="copyright" id="copyright">
+      © 2026 · 2 Озера · <span class="name">Давид Ардзинба</span> · все права защищены
+    </div>
+  </div>
+
+  <!-- Админ-панель -->
+  <div class="admin-panel" id="adminPanel">
+    <div class="admin-inner">
+      <div class="admin-header">
+        <div>
+          <h2>🔐 Админ-панель</h2>
+          <div class="sub">Ответы всех участников теста · Ардзинба Давид</div>
+        </div>
+        <button class="admin-close" id="adminClose">✕ Закрыть</button>
+      </div>
+
+      <div class="admin-stats" id="adminStats"></div>
+
+      <input type="text" class="admin-search" id="adminSearch" placeholder="🔍 Поиск по имени, фамилии, городу...">
+
+      <div class="admin-actions">
+        <button class="admin-btn" id="adminExport">📥 Экспорт JSON</button>
+        <button class="admin-btn danger" id="adminClear">🗑️ Очистить всё</button>
+      </div>
+
+      <div class="admin-table-wrap" id="adminTableWrap">
+        <div class="admin-empty" id="adminEmpty">
+          <span class="big">💧</span>
+          Пока никто не прошёл тест.<br>
+          Ответы появятся здесь автоматически.
+        </div>
+        <table class="admin-table" id="adminTable" style="display:none;">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Участник</th>
+              <th>Возраст</th>
+              <th>Город</th>
+              <th>Контакт</th>
+              <th>Балл</th>
+              <th>Статус</th>
+              <th>Ответы</th>
+              <th>Время</th>
+            </tr>
+          </thead>
+          <tbody id="adminTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="copy-toast" id="copyToast">Скопировано ✓</div>
+
+  <script>
+    (function() {
+      const STORAGE_KEY = 'two_lakes_ambassador_submissions';
+      const questions = document.querySelectorAll('.question');
+      const totalQuestions = questions.length;
+
+      const anketa = document.getElementById('anketa');
+      const progressWrap = document.getElementById('progressWrap');
+      const btnStart = document.getElementById('btnStart');
+      const btnBack = document.getElementById('btnBack');
+      const btnNext = document.getElementById('btnNext');
+      const navRow = document.getElementById('navRow');
+      const progressFill = document.getElementById('progressFill');
+      const progressText = document.getElementById('progressText');
+      const progressPercent = document.getElementById('progressPercent');
+      const resultDiv = document.getElementById('result');
+      const btnRestart = document.getElementById('btnRestart');
+      const copyright = document.getElementById('copyright');
+
+      const inpName = document.getElementById('inpName');
+      const inpSurname = document.getElementById('inpSurname');
+      const inpAge = document.getElementById('inpAge');
+      const inpCity = document.getElementById('inpCity');
+      const inpContact = document.getElementById('inpContact');
+
+      let currentIndex = 0;
+      let answers = new Array(totalQuestions).fill(null);
+      let userData = {};
+
+      const questionTitles = [
+        'Знание компании',
+        'Близкая фраза',
+        'Туалетная и болотная вода',
+        'Покупка бутылки + этикетка',
+        'Защита озёра всю жизнь',
+        'Девиз амбассадора'
+      ];
+
+      function validateAnketa() {
+        const nameOk = inpName.value.trim().length >= 2;
+        const surnameOk = inpSurname.value.trim().length >= 2;
+        btnStart.disabled = !(nameOk && surnameOk);
+      }
+
+      [inpName, inpSurname].forEach(inp => {
+        inp.addEventListener('input', validateAnketa);
+      });
+
+      btnStart.addEventListener('click', () => {
+        if (btnStart.disabled) return;
+        userData = {
+          name: inpName.value.trim(),
+          surname: inpSurname.value.trim(),
+          age: inpAge.value.trim() || '—',
+          city: inpCity.value.trim() || '—',
+          contact: inpContact.value.trim() || '—'
+        };
+        anketa.style.display = 'none';
+        progressWrap.style.display = 'block';
+        navRow.style.display = 'flex';
+        currentIndex = 0;
+        showQuestion(0);
+      });
+
+      function updateProgress() {
+        const answeredCount = answers.filter(a => a !== null).length;
+        const percent = Math.round((answeredCount / totalQuestions) * 100);
+        progressFill.style.width = percent + '%';
+        progressPercent.textContent = percent + '%';
+        progressText.textContent = `Вопрос ${currentIndex + 1} из ${totalQuestions}`;
+      }
+
+      function showQuestion(index) {
+        questions.forEach((q, i) => {
+          q.classList.toggle('active', i === index);
+        });
+        btnNext.disabled = answers[index] === null;
+        btnBack.disabled = index === 0;
+        if (index === totalQuestions - 1) {
+          btnNext.textContent = 'Завершить ✓';
+        } else {
+          btnNext.textContent = 'Продолжить →';
+        }
+        updateProgress();
+      }
+
+      function attachHandlers() {
+        document.querySelectorAll('.scale').forEach(scale => {
+          scale.addEventListener('click', (e) => {
+            const option = e.target.closest('.scale-option');
+            if (!option) return;
+            const qIndex = parseInt(option.closest('.question').dataset.q);
+            scale.querySelectorAll('.scale-option').forEach(o => o.classList.remove('selected'));
+            option.classList.add('selected');
+            answers[qIndex] = option.dataset.value;
+            btnNext.disabled = false;
+            updateProgress();
+          });
+        });
+
+        document.querySelectorAll('.phrases').forEach(container => {
+          container.addEventListener('click', (e) => {
+            const phrase = e.target.closest('.phrase');
+            if (!phrase) return;
+            const qIndex = parseInt(phrase.closest('.question').dataset.q);
+            container.querySelectorAll('.phrase').forEach(p => p.classList.remove('selected'));
+            phrase.classList.add('selected');
+            answers[qIndex] = phrase.dataset.value;
+            btnNext.disabled = false;
+            updateProgress();
+          });
+        });
+
+        document.querySelectorAll('.choice-row').forEach(container => {
+          container.addEventListener('click', (e) => {
+            const btn = e.target.closest('.choice-btn');
+            if (!btn) return;
+            const qIndex = parseInt(btn.closest('.question').dataset.q);
+            container.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            answers[qIndex] = btn.dataset.value;
+            btnNext.disabled = false;
+            updateProgress();
+          });
+        });
+      }
+
+      btnNext.addEventListener('click', () => {
+        if (answers[currentIndex] === null) return;
+
+        if (currentIndex === totalQuestions - 1) {
+          showResult();
+          return;
+        }
+        currentIndex++;
+        showQuestion(currentIndex);
+      });
+
+      btnBack.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          showQuestion(currentIndex);
+        }
+      });
+
+      function calculateScore() {
+        let score = 0;
+        const goodValues = {
+          0: ['7', '8', '9', '10'],
+          1: ['«Ардзинба Давид — гений гидрологии»', '«Я пью только из двух озёр»', '«Болото — это состояние души»', '«Этикетка важнее содержимого»'],
+          2: ['Да, полностью', 'Смотря какое озеро'],
+          3: ['Да, я клею как бог', 'Только если Ардзинба Давид рядом'],
+          4: ['Клянусь болотом', 'Только до первого шторма'],
+          5: ['«Озеро не осушишь — амбассадор не сдаётся»', '«Два озера — одна душа»', '«Наклеил этикетку — спас мир»', '«Туалетная вода — это искусство»']
+        };
+        answers.forEach((ans, i) => {
+          if (ans === null) return;
+          const good = goodValues[i];
+          if (good && good.includes(ans)) score++;
+        });
+        return score;
+      }
+
+      function getStatus(score) {
+        if (score >= 6) return { emoji: '👑', title: 'Легендарный амбассадор' };
+        if (score >= 4) return { emoji: '🏞️', title: 'Настоящий амбассадор' };
+        if (score >= 2) return { emoji: '🐸', title: 'Начинающий амбассадор' };
+        return { emoji: '🪷', title: 'Сомневающийся наблюдатель' };
+      }
+
+      function showResult() {
+        questions.forEach(q => q.classList.remove('active'));
+        navRow.style.display = 'none';
+        progressWrap.style.display = 'none';
+        resultDiv.classList.add('active');
+
+        const score = calculateScore();
+        const status = getStatus(score);
+
+        let desc;
+        if (score >= 6) {
+          desc = 'Ты — душа двух озёр. Ардзинба Давид лично жмёт тебе руку (мокрую, болотную). Готов наклеить этикетку даже на облако.';
+        } else if (score >= 4) {
+          desc = 'Ты веришь в 2 Озера, знаешь толк в туалетной и болотной воде. Иногда сомневаешься, но озеро тебя не отпустит.';
+        } else if (score >= 2) {
+          desc = 'Ты ещё не погрузился с головой, но уже чувствуешь запах болота. С таким настроем скоро станешь легендой.';
+        } else {
+          desc = 'Озеро пока не выбрало тебя. Но этикетка уже лежит в кармане — просто подожди. Ардзинба Давид верит в тебя.';
+        }
+
+        document.getElementById('resultEmoji').textContent = status.emoji;
+        document.getElementById('resultTitle').textContent = status.title;
+        document.getElementById('resultDesc').textContent = desc;
+        document.getElementById('resultScore').innerHTML = `Твой результат: <span class="big">${score} / ${totalQuestions}</span>`;
+
+        const itemsContainer = document.getElementById('resultItems');
+        itemsContainer.innerHTML = '';
+        answers.forEach((ans, i) => {
+          const row = document.createElement('div');
+          row.className = 'result-item';
+          row.innerHTML = `<span>${questionTitles[i]}</span><span class="ans">${ans || '—'}</span>`;
+          itemsContainer.appendChild(row);
+        });
+
+        saveSubmission({
+          user: userData,
+          answers: answers.slice(),
+          score: score,
+          status: status,
+          time: new Date().toISOString()
+        });
+      }
+
+      function saveSubmission(data) {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          const list = raw ? JSON.parse(raw) : [];
+          list.push(data);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+        } catch (e) {
+          console.warn('Не удалось сохранить:', e);
+        }
+      }
+
+      function getSubmissions() {
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : [];
+        } catch (e) {
+          return [];
+        }
+      }
+
+      function clearSubmissions() {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+
+      btnRestart.addEventListener('click', () => {
+        answers = new Array(totalQuestions).fill(null);
+        userData = {};
+        document.querySelectorAll('.scale-option.selected, .phrase.selected, .choice-btn.selected')
+          .forEach(el => el.classList.remove('selected'));
+        inpName.value = '';
+        inpSurname.value = '';
+        inpAge.value = '';
+        inpCity.value = '';
+        inpContact.value = '';
+        btnStart.disabled = true;
+
+        currentIndex = 0;
+        resultDiv.classList.remove('active');
+        anketa.style.display = 'block';
+        progressWrap.style.display = 'none';
+        navRow.style.display = 'none';
+        questions.forEach(q => q.classList.remove('active'));
+      });
+
+      const adminPanel = document.getElementById('adminPanel');
+      const adminClose = document.getElementById('adminClose');
+      const adminTbody = document.getElementById('adminTbody');
+      const adminTable = document.getElementById('adminTable');
+      const adminEmpty = document.getElementById('adminEmpty');
+      const adminStats = document.getElementById('adminStats');
+      const adminSearch = document.getElementById('adminSearch');
+      const adminExport = document.getElementById('adminExport');
+      const adminClear = document.getElementById('adminClear');
+      const copyToast = document.getElementById('copyToast');
+
+      let clickTimes = [];
+      const CLICKS_NEEDED = 5;
+      const CLICK_WINDOW_MS = 3000;
+
+      copyright.addEventListener('click', () => {
+        const now = Date.now();
+        clickTimes.push(now);
+        clickTimes = clickTimes.filter(t => now - t <= CLICK_WINDOW_MS);
+
+        if (clickTimes.length >= CLICKS_NEEDED) {
+          clickTimes = [];
+          openAdmin();
+        }
+      });
+
+      function openAdmin() {
+        adminPanel.classList.add('active');
+        renderAdmin();
+      }
+
+      function closeAdmin() {
+        adminPanel.classList.remove('active');
+      }
+
+      adminClose.addEventListener('click', closeAdmin);
+      adminPanel.addEventListener('click', (e) => {
+        if (e.target === adminPanel) closeAdmin();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && adminPanel.classList.contains('active')) {
+          closeAdmin();
+        }
+      });
+
+      function renderAdmin(filter = '') {
+        const list = getSubmissions();
+
+        const total = list.length;
+        const avgScore = total ? (list.reduce((s, x) => s + x.score, 0) / total).toFixed(1) : '0.0';
+        const legends = list.filter(x => x.score >= 6).length;
+        adminStats.innerHTML = `
+          <div class="stat-box"><div class="label">Всего участников</div><div class="value">${total}</div></div>
+          <div class="stat-box"><div class="label">Средний балл</div><div class="value">${avgScore} / ${totalQuestions}</div></div>
+          <div class="stat-box"><div class="label">Легендарных</div><div class="value">${legends}</div></div>
+        `;
+
+        const f = filter.trim().toLowerCase();
+        const filtered = f ? list.filter(item => {
+          const u = item.user || {};
+          return [u.name, u.surname, u.city, u.contact].some(v => (v || '').toLowerCase().includes(f));
+        }) : list;
+
+        if (!filtered.length) {
+          adminEmpty.style.display = 'block';
+          adminTable.style.display = 'none';
+          if (f && list.length) {
+            adminEmpty.innerHTML = `<span class="big">🔍</span>Ничего не найдено по запросу «${escapeHtml(filter)}»`;
+          } else {
+            adminEmpty.innerHTML = `<span class="big">💧</span>Пока никто не прошёл тест.<br>Ответы появятся здесь автоматически.`;
+          }
+          return;
+        }
+
+        adminEmpty.style.display = 'none';
+        adminTable.style.display = 'table';
+
+        const sorted = filtered.slice().sort((a, b) => new Date(b.time) - new Date(a.time));
+
+        adminTbody.innerHTML = sorted.map((item, idx) => {
+          const u = item.user || {};
+          const st = item.status || { emoji: '?', title: '—' };
+          const answersText = item.answers
+            .map((a, i) => `<b>${i + 1}.</b> ${escapeHtml(a || '—')}`)
+            .join('<br>');
+          const time = formatTime(item.time);
+          return `
+            <tr>
+              <td>${idx + 1}</td>
+              <td class="name-cell">${escapeHtml(u.surname || '')} ${escapeHtml(u.name || '')}</td>
+              <td>${escapeHtml(u.age || '—')}</td>
+              <td>${escapeHtml(u.city || '—')}</td>
+              <td>${escapeHtml(u.contact || '—')}</td>
+              <td class="score-cell">${item.score} / ${totalQuestions}</td>
+              <td class="badge-cell">${st.emoji} ${escapeHtml(st.title)}</td>
+              <td class="answers-cell">${answersText}</td>
+              <td class="admin-time">${time}</td>
+            </tr>
+          `;
+        }).join('');
+      }
+
+      function formatTime(iso) {
+        if (!iso) return '—';
+        const d = new Date(iso);
+        if (isNaN(d.getTime())) return '—';
+        return d.toLocaleString('ru-RU', {
+          day: '2-digit', month: '2-digit', year: '2-digit',
+          hour: '2-digit', minute: '2-digit'
+        });
+      }
+
+      function escapeHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      }
+
+      adminSearch.addEventListener('input', () => {
+        renderAdmin(adminSearch.value);
+      });
+
+      adminExport.addEventListener('click', () => {
+        const list = getSubmissions();
+        const blob = new Blob([JSON.stringify(list, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `2ozera_ambassadors_${Date.now()}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      adminClear.addEventListener('click', () => {
+        if (confirm('Удалить все заявки? Это действие нельзя отменить.')) {
+          clearSubmissions();
+          adminSearch.value = '';
+          renderAdmin();
+        }
+      });
+
+      function init() {
+        attachHandlers();
+        validateAnketa();
+      }
+
+      init();
+    })();
+  </script>
+</body>
+</html>
